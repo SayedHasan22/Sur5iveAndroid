@@ -18,31 +18,27 @@ public class ContactsFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_message,
+        View view = inflater.inflate(R.layout.fragment_contacts,
                 container, false);
-
-        TextView txtNumber = view.findViewById(R.id.saveButton);
-        txtNumber.setOnClickListener(this);
-        txtNumber.getText();
 
         List<Object> contactList = new ArrayList<>();
 
-        // Add to cache
-        //SharedCacheService.getInstance().getCache().put("ContactList", contactList);
-
-        // Get from cache
-        //contactList = (List<Object>) SharedCacheService.getInstance().getCache().get("ContactList");
+        
 
         return view;
     }
 
-    public void setText(String text) {
-        //TextView view = (TextView) getView().findViewById(R.id.detailsText);
-        //view.setText(text);
+    private class ContactArrayAdapter extends ArrayAdapter<Contact> {
+
+        List<String> contactList = new ArrayList<Contact>();
+
+        public ContactArrayAdapter(Context context, int textViewResourceId, List<Contact> objects){
+            super(context, textViewResourceId, objects)
+            for(int i = 0; i<objects.size(); i++){
+                contactList.put(objects.get(i));
+            }
+        }
     }
 
-    @Override
-    public void onClick(View view) {
-        Toast.makeText(this.getActivity().getApplicationContext(), "Text Field Pressed", Toast.LENGTH_SHORT).show();
-    }
+
 }

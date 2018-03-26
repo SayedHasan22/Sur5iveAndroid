@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_contacts:
                     ft = fm.beginTransaction();
-                    ft.replace(R.id.content_view, new EmergencyFragment());
+                    ft.replace(R.id.content_view, new ContactsFragment());
                     ft.commit();
                     mTextMessage.setText(R.string.title_contacts);
                     return true;
@@ -45,13 +45,13 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_user:
                     ft = fm.beginTransaction();
-                    ft.replace(R.id.content_view, new EmergencyFragment());
+                    ft.replace(R.id.content_view, new UserFragment());
                     ft.commit();
                     mTextMessage.setText(R.string.title_user);
                     return true;
                 case R.id.navigation_history:
                     ft = fm.beginTransaction();
-                    ft.replace(R.id.content_view, new EmergencyFragment());
+                    ft.replace(R.id.content_view, new HistoryFragment());
                     ft.commit();
                     mTextMessage.setText(R.string.title_history);
                     return true;
