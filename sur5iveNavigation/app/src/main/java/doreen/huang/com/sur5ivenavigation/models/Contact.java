@@ -1,3 +1,4 @@
+package doreen.huang.com.sur5ivenavigation.models;
 
 public class Contact {
     public int id;
