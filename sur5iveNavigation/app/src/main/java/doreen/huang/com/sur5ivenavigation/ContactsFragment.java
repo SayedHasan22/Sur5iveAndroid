@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ public class ContactsFragment extends Fragment {
 
         ListView listView = view.findViewById(R.id.contact_list);
 
-        listView.setAdapter(new ContactArrayAdapter(view.getContext(), 0, contactList));
+        listView.setAdapter(new ContactArrayAdapter(view.getContext(), contactList));
 
         return view;
     }
@@ -40,22 +41,63 @@ public class ContactsFragment extends Fragment {
         contact1.id = 1;
         contact1.firstName = "FTest";
         contact1.lastName = "LTest";
-        contact1.phoneNumber = "14165618724";
+        contact1.phoneNumber = "14165557777";
 
         contactList.add(contact1);
+
+        Contact contact2 = new Contact();
+        contact2.id = 2;
+        contact2.firstName = "John";
+        contact2.lastName = "Doe";
+        contact2.phoneNumber = "14164443333";
+
+        contactList.add(contact2);
+
+        Contact contact3 = new Contact();
+        contact3.id = 3;
+        contact3.firstName = "John";
+        contact3.lastName = "Doe";
+        contact3.phoneNumber = "14164443334";
+
+        contactList.add(contact3);
 
         return contactList;
     }
 
     private class ContactArrayAdapter extends ArrayAdapter<Contact> {
 
-        List<Contact> contactList = new ArrayList<>();
+        public List<Contact> contactList = new ArrayList<>();
 
-        ContactArrayAdapter(Context context, int textViewResourceId, List<Contact> objects){
-            super(context, textViewResourceId, objects);
+        int layoutId;
+
+        ContactArrayAdapter(Context context, List<Contact> objects){
+            super(context, R.layout.list_contact, objects);
+
+            this.layoutId = R.layout.list_contact;
+
             for(int i = 0; i<objects.size(); i++){
                 contactList.add(objects.get(i));
             }
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+
+            if( convertView == null ){
+                //We must create a View:
+                convertView = inflater.inflate(this.layoutId, parent, false);
+            }
+            //Here we can do changes to the convertView, such as set a text on a TextView
+            //or an image on an ImageView.
+            TextView lblContactName = convertView.findViewById(R.id.lbl_contactName);
+            TextView lblContactNumber = convertView.findViewById(R.id.lbl_contactPhone);
+
+            lblContactName.setText(contactList.get(position).firstName + " " + contactList.get(position).lastName);
+            lblContactNumber.setText(contactList.get(position).phoneNumber);
+
+            return convertView;
         }
     }
 
