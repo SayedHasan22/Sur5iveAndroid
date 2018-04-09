@@ -1,48 +1,63 @@
 package doreen.huang.com.sur5ivenavigation;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import doreen.huang.com.sur5ivenavigation.services.SharedCacheService;
+import doreen.huang.com.sur5ivenavigation.models.Contact;
 
-public class ContactsFragment extends Fragment implements View.OnClickListener {
+public class ContactsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_message,
+        View view = inflater.inflate(R.layout.fragment_contacts,
                 container, false);
 
-        TextView txtNumber = view.findViewById(R.id.saveButton);
-        txtNumber.setOnClickListener(this);
-        txtNumber.getText();
+        List<Contact> contactList = getContacts();
 
-        List<Object> contactList = new ArrayList<>();
+        ListView listView = view.findViewById(R.id.contact_list);
 
-        // Add to cache
-        //SharedCacheService.getInstance().getCache().put("ContactList", contactList);
-
-        // Get from cache
-        //contactList = (List<Object>) SharedCacheService.getInstance().getCache().get("ContactList");
+        listView.setAdapter(new ContactArrayAdapter(view.getContext(), 0, contactList));
 
         return view;
     }
 
-    public void setText(String text) {
-        //TextView view = (TextView) getView().findViewById(R.id.detailsText);
-        //view.setText(text);
+    public List<Contact> getContacts() {
+        List<Contact> contactList = new ArrayList<>();
+
+        // Request.get("http://sur5ive.com/api/contacts");
+
+        Contact contact1 = new Contact();
+        contact1.id = 1;
+        contact1.firstName = "FTest";
+        contact1.lastName = "LTest";
+        contact1.phoneNumber = "14165618724";
+
+        contactList.add(contact1);
+
+        return contactList;
     }
 
-    @Override
-    public void onClick(View view) {
-        Toast.makeText(this.getActivity().getApplicationContext(), "Text Field Pressed", Toast.LENGTH_SHORT).show();
+    private class ContactArrayAdapter extends ArrayAdapter<Contact> {
+
+        List<Contact> contactList = new ArrayList<>();
+
+        ContactArrayAdapter(Context context, int textViewResourceId, List<Contact> objects){
+            super(context, textViewResourceId, objects);
+            for(int i = 0; i<objects.size(); i++){
+                contactList.add(objects.get(i));
+            }
+        }
     }
+
+
 }
