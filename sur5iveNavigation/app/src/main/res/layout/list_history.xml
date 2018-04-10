@@ -6,28 +6,30 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="20dp">
-
         <TextView
-            android:id="@+id/lbl_contactName"
+            android:id="@+id/lbl_timestamp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Contact Name"
             android:textSize="18sp"
             tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="16dp" />
+            tools:layout_editor_absoluteY="16dp"
+            tools:text="Friday, Jun 7, 2013 12:10:56 PM" />
 
         <TextView
-            android:id="@+id/lbl_contactPhone"
+            android:id="@+id/lbl_sentmessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="+1 (416) 555-5555"
             tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="43dp" />
+            tools:layout_editor_absoluteY="43dp"
+            tools:text="Sent Message" />
 
     </LinearLayout>
 
