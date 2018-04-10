@@ -11,10 +11,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import doreen.huang.com.sur5ivenavigation.services.SharedCacheService;
-
 public class MessageFragment extends Fragment implements View.OnClickListener {
-
+    
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
