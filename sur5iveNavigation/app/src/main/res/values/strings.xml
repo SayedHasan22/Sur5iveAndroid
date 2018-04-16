@@ -1,8 +1,26 @@
 <resources>
-    <string name="app_name">sur5iveNavigation</string>
+    <string name="app_name">Sur5ive</string>
+
     <string name="title_message">Message</string>
     <string name="title_contacts">Contacts</string>
     <string name="title_emergency">Emergency</string>
     <string name="title_user">User</string>
     <string name="title_history">History</string>
+
+    <string name="title_add">Add</string>
+    <string name="title_edit">Edit</string>
+
+    <string name="preference_file_key">com.ja.sur5ive</string>
+
+    <string name="err_empty_field">Field is required.</string>
+    <string name="err_invalid_value">Field value is invalid.</string>
+
+    <string name="preference_firstname">FirstName</string>
+    <string name="preference_lastname">LastName</string>
+    <string name="preference_phonenumber">PhoneNumber</string>
+    <string name="preference_token">Token</string>
+    <string name="preference_contacts">Contacts</string>
+    <string name="preference_history">History</string>
+    <string name="preference_usersetup">UserSetup</string>
+    <string name="preference_pinsetup">PINSetup</string>
 </resources>
